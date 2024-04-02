@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { MarketPlaceToken } from './contracts/mPlaceToken';
 
-import artifact02 from '../artifacts/stateful.json';
+// import artifact02 from '../artifacts/stateful.json';
 
 import artifact04 from '../artifacts/mPlaceToken.json';
 
