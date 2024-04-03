@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const MainNavigation = () => {
     const [showHomeDropdown, setShowHomeDropdown] = useState<boolean>(false);
@@ -9,15 +10,6 @@ const MainNavigation = () => {
   
     const [showOrderLockDropdown, setShowOrderLockDropdown] = useState<boolean>(false);
   
-  
-    const handlePageChange = (page: string) => {
-      setShowHomeDropdown(false);
-      setShowTodoDropdown(false);
-      setShowDTOrdDropdown(false)
-      setShowOrderLockDropdown(false);
-  
-    };
-
   return (
             <nav className="navbar">
               <div className="dropdown">
@@ -29,20 +21,17 @@ const MainNavigation = () => {
                 </button>
                 {showHomeDropdown && (
                   <div className="dropdown-content">
-
-                    <button className="dropdown-button" onClick={() => handlePageChange('home')}>
-                      Access
-                    </button>
-
-                    <button className="dropdown-button" 
-                          onClick={() => handlePageChange('home02')}>
-                        Send Sats
-                    </button>
-
-                    <button className="dropdown-button" onClick={() => handlePageChange('home00WeBSVmenu')}>
+                     <NavLink to='/' className={({isActive}) => isActive ? 'dropdown-button active' : 'dropdown-button'} end>
                       Reception
-                    </button>
+                    </NavLink>
 
+                    <NavLink to='/access' className={({isActive}) => isActive ? 'dropdown-button active' : 'dropdown-button'} end>
+                    Access
+                    </NavLink>
+
+                    <NavLink to='/send-sats' className={({isActive}) => isActive ? 'dropdown-button active' : 'dropdown-button'} end>
+                    Send Sats
+                    </NavLink>
 
                   </div>
                 )}
@@ -67,23 +56,23 @@ const MainNavigation = () => {
                         <div className="button">
 
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto',  marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home21')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Create
                           </button>
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home22')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Reshape
                           </button>
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home23')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Transfer
                           </button>
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home24')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Melt
                           </button>
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home04')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Details
                           </button>
 
@@ -103,19 +92,19 @@ const MainNavigation = () => {
 
 
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home16b')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Order Lock
                           </button>
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home16d')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Cancel
                           </button>
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home16e')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Buy
                           </button>
                           <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} onClick={() => handlePageChange('home16f')}>
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
                             Details
                           </button>
 

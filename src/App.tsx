@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 
 import Home from './Pages/Home';
@@ -15,7 +14,6 @@ import Page19TokenBuy from './Pages/Page19TokenBuy';
 
 import './App.css';
 import NotFound from './Pages/NotFound';
-import MainNavigation from './components/MainNavigation';
 import RootLayout from './Pages/RootLayout';
 
 function App() {
