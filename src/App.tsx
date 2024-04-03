@@ -16,11 +16,12 @@ import Page19TokenBuy from './Pages/Page19TokenBuy';
 import './App.css';
 import NotFound from './Pages/NotFound';
 import MainNavigation from './components/MainNavigation';
+import RootLayout from './Pages/RootLayout';
 
 function App() {
 
   const routesDef = createRoutesFromElements(
-    <Route errorElement={<NotFound/>}>
+    <Route element={<RootLayout/>} errorElement={<NotFound/>}>
       <Route path='/' element={<Home00WeBSVmenu />}/>
       <Route path='/access' element={<Home passedData=''/>}/>
       <Route path='/send-sats' element={<Page01TX />}/>
@@ -42,10 +43,7 @@ function App() {
 
 
       <div className="App">
-            <MainNavigation/>
-
             <RouterProvider router={router}/>
-
         </div>
 
  
