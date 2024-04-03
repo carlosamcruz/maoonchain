@@ -14,6 +14,7 @@ import Page18TokenLockCancel from './Pages/Page18TokenLockCancel';
 import Page19TokenBuy from './Pages/Page19TokenBuy';
 
 import './App.css';
+import NotFound from './Pages/NotFound';
 
 function App() {
   const [showHomeDropdown, setShowHomeDropdown] = useState<boolean>(false);
@@ -47,7 +48,7 @@ function App() {
       <Route path='/smart-ordinals/market/cancel' element={<Page18TokenLockCancel/>}/>
       <Route path='/smart-ordinals/market/buy' element={<Page19TokenBuy/>}/>
       <Route path='/smart-ordinals/market/details' element={<Page03Read passedData={'OLock'}/>}/>
-      
+      <Route path='/*' element={<NotFound/>}/>
     </Route>
   )
 
