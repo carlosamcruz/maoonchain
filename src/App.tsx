@@ -1,53 +1,26 @@
-import React, { useRef, FC, useState } from 'react';
-//import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-
-import './App.css';
-
-import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString } from "scrypt-ts";
-
+import { useState } from 'react';
 
 import Home from './Pages/Home';
-//import HomeUser from './HomeUser';
 import Home00WeBSVmenu from './Pages/Home00WeBSVmenu';
-
 import Page01TX from './Pages/Page01TX';
-
 import Page03Read from './Pages/Page03Read';
-
 import Page12TokenDCreate from './Pages/Page12TokenDCreate';
-
 import Page13TokenDReshape from './Pages/Page13TokenDReshape';
 import Page14TokenDTransfer from './Pages/Page14TokenDTransfer';
-
 import Page15TokenDMelt from './Pages/Page15TokenDMelt';
-
 import Page16TokenOLock from './Pages/Page16TokenOLock';
-
 import Page18TokenLockCancel from './Pages/Page18TokenLockCancel';
 import Page19TokenBuy from './Pages/Page19TokenBuy';
 
-
-const provider = new DefaultProvider({network: bsv.Networks.testnet});
-let Alice: TestWallet
-const privateKey = bsv.PrivateKey.fromHex("79342a4c317817a80a298fe116147a74e4e90912a4f321e588a4db67204e29b0", bsv.Networks.testnet)   
+import './App.css';
 
 function App() {
-//const App: FC = () => {  
-
-//const [currentPage, setCurrentPage] = useState<string>('home');
-
-//const handlePageChange = (page: string) => {
-//  setCurrentPage(page);
-//};
-
   const [currentPage, setCurrentPage] = useState<string>('home00WeBSVmenu');
   const [showHomeDropdown, setShowHomeDropdown] = useState<boolean>(false);
 
 
   const [showTodoDropdown, setShowTodoDropdown] = useState<boolean>(false);
 
-  const [showSendDropdown, setShowSendDropdown] = useState<boolean>(false);
   const [showDTOrdDropdown, setShowDTOrdDropdown] = useState<boolean>(false);
 
   const [showOrderLockDropdown, setShowOrderLockDropdown] = useState<boolean>(false);
@@ -56,13 +29,13 @@ function App() {
   const handlePageChange = (page: string) => {
     setCurrentPage(page);
     setShowHomeDropdown(false);
-
     setShowTodoDropdown(false);
-    setShowSendDropdown(false);
     setShowDTOrdDropdown(false)
     setShowOrderLockDropdown(false);
 
   };
+
+
 
   return (
 
@@ -72,7 +45,7 @@ function App() {
             <nav className="navbar">
               <div className="dropdown">
                 <button className="button" 
-                    onClick={() => {setShowSendDropdown(false);  setShowHomeDropdown(!showHomeDropdown); 
+                    onClick={() => {  setShowHomeDropdown(!showHomeDropdown); 
                                     setShowTodoDropdown(false);  
                                     setShowOrderLockDropdown(false)}}>
                   Home
@@ -100,7 +73,7 @@ function App() {
 
               <div className="dropdown">
                 <button className="button" 
-                    onClick={() => {setShowSendDropdown(false);  setShowTodoDropdown(!showTodoDropdown); 
+                    onClick={() => {  setShowTodoDropdown(!showTodoDropdown); 
                                     setShowHomeDropdown(false);   
                                     setShowOrderLockDropdown(false)}}>
                   Smart Ord
@@ -110,7 +83,7 @@ function App() {
 
                       <button className="dropdown-button" 
                           onClick={() => {setShowDTOrdDropdown(!showDTOrdDropdown);  
-                          setShowSendDropdown(false);  setShowOrderLockDropdown(false) }}>
+                            setShowOrderLockDropdown(false) }}>
                         1SatOrdinals
                       </button>
                       {showDTOrdDropdown && (
@@ -144,7 +117,7 @@ function App() {
 
 
                       <button className="dropdown-button" 
-                          onClick={() => {setShowOrderLockDropdown(!showOrderLockDropdown); setShowSendDropdown(false);  
+                          onClick={() => {setShowOrderLockDropdown(!showOrderLockDropdown);   
                           setShowDTOrdDropdown(false)}}>
                         Market OnChain
                       </button>
@@ -179,18 +152,11 @@ function App() {
             </nav>
 
             {currentPage === 'home' && <Home passedData={''}/>}
-            {currentPage === 'homeUser' && <Home passedData={'rapido'} />}
             {currentPage === 'home00WeBSVmenu' && <Home00WeBSVmenu />}
            
             {currentPage === 'home02' && <Page01TX />}
 
             {currentPage === 'home04' && <Page03Read passedData={''}/>}
-
-            {currentPage === 'home13' && <Page12TokenDCreate passedData={'Drop'}/>}
-            {currentPage === 'home14' && <Page13TokenDReshape passedData={'Drop'}/>}
-            {currentPage === 'home15' && <Page14TokenDTransfer passedData={'Drop'}/>}
-            {currentPage === 'home16' && <Page15TokenDMelt passedData={'Drop'}/>}
-
 
             {currentPage === 'home16b' && <Page16TokenOLock passedData={'p2pkh'}/>}
             
@@ -199,27 +165,10 @@ function App() {
             {currentPage === 'home16f' && <Page03Read passedData={'OLock'}/>}
 
 
-
-            {currentPage === 'home17' && <Page12TokenDCreate passedData={'Return'}/>}
-            {currentPage === 'home18' && <Page13TokenDReshape passedData={'Return'}/>}
-            {currentPage === 'home19' && <Page14TokenDTransfer passedData={'Return'}/>}
-            {currentPage === 'home20' && <Page15TokenDMelt passedData={'Return'}/>}
-
             {currentPage === 'home21' && <Page12TokenDCreate passedData={'Ordinals'}/>}
             {currentPage === 'home22' && <Page13TokenDReshape passedData={'Ordinals'}/>}
             {currentPage === 'home23' && <Page14TokenDTransfer passedData={'Ordinals'}/>}
-            {currentPage === 'home24' && <Page15TokenDMelt passedData={'Ordinals'}/>}
-
-            {currentPage === 'home25' && <Page12TokenDCreate passedData={'TrueR'}/>}
-            {currentPage === 'home26' && <Page12TokenDCreate passedData={'TrueD'}/>}
-            {currentPage === 'home27' && <Page15TokenDMelt passedData={'True'}/>}           
-
-            {currentPage === 'home30stamps' && <Page12TokenDCreate passedData={'Stamps'}/>}
-            {currentPage === 'home31stamps' && <Page13TokenDReshape passedData={'Stamps'}/>}
-            {currentPage === 'home32stamps' && <Page14TokenDTransfer passedData={'Stamps'}/>}
-            {currentPage === 'home33stamps' && <Page15TokenDMelt passedData={'Stamps'}/>}
-
-            {currentPage === 'GPToken09' && <Page03Read passedData={'GPToken'}/>}          
+            {currentPage === 'home24' && <Page15TokenDMelt passedData={'Ordinals'}/>}       
 
         </div>
 
