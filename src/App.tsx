@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 
 import Home from './Pages/Home';
 import Home00WeBSVmenu from './Pages/Home00WeBSVmenu';
@@ -15,9 +16,7 @@ import Page19TokenBuy from './Pages/Page19TokenBuy';
 import './App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<string>('home00WeBSVmenu');
   const [showHomeDropdown, setShowHomeDropdown] = useState<boolean>(false);
-
 
   const [showTodoDropdown, setShowTodoDropdown] = useState<boolean>(false);
 
@@ -27,7 +26,6 @@ function App() {
 
 
   const handlePageChange = (page: string) => {
-    setCurrentPage(page);
     setShowHomeDropdown(false);
     setShowTodoDropdown(false);
     setShowDTOrdDropdown(false)
@@ -35,7 +33,25 @@ function App() {
 
   };
 
+  const routesDef = createRoutesFromElements(
+    <Route>
+      <Route path='/' element={<Home00WeBSVmenu />}/>
+      <Route path='/access' element={<Home passedData=''/>}/>
+      <Route path='/send-sats' element={<Page01TX />}/>
+      <Route path='/smart-ordinals/ordinals-token/create' element={<Page12TokenDCreate passedData={'Ordinals'}/>}/>
+      <Route path='/smart-ordinals/ordinals-token/reshape' element={<Page13TokenDReshape passedData={'Ordinals'}/>}/>
+      <Route path='/smart-ordinals/ordinals-token/transfer' element={<Page14TokenDTransfer passedData={'Ordinals'}/>}/>
+      <Route path='/smart-ordinals/ordinals-token/melt' element={<Page15TokenDMelt passedData={'Ordinals'}/>}/>
+      <Route path='/smart-ordinals/ordinals-token/details' element={<Page03Read passedData={''}/>}/>
+      <Route path='/smart-ordinals/market/order-lock' element={<Page16TokenOLock passedData={'p2pkh'}/>}/>
+      <Route path='/smart-ordinals/market/cancel' element={<Page18TokenLockCancel/>}/>
+      <Route path='/smart-ordinals/market/buy' element={<Page19TokenBuy/>}/>
+      <Route path='/smart-ordinals/market/details' element={<Page03Read passedData={'OLock'}/>}/>
+      
+    </Route>
+  )
 
+  const router = createBrowserRouter(routesDef);
 
   return (
 
@@ -151,24 +167,7 @@ function App() {
 
             </nav>
 
-            {currentPage === 'home' && <Home passedData={''}/>}
-            {currentPage === 'home00WeBSVmenu' && <Home00WeBSVmenu />}
-           
-            {currentPage === 'home02' && <Page01TX />}
-
-            {currentPage === 'home04' && <Page03Read passedData={''}/>}
-
-            {currentPage === 'home16b' && <Page16TokenOLock passedData={'p2pkh'}/>}
-            
-            {currentPage === 'home16d' && <Page18TokenLockCancel/>}
-            {currentPage === 'home16e' && <Page19TokenBuy/>}
-            {currentPage === 'home16f' && <Page03Read passedData={'OLock'}/>}
-
-
-            {currentPage === 'home21' && <Page12TokenDCreate passedData={'Ordinals'}/>}
-            {currentPage === 'home22' && <Page13TokenDReshape passedData={'Ordinals'}/>}
-            {currentPage === 'home23' && <Page14TokenDTransfer passedData={'Ordinals'}/>}
-            {currentPage === 'home24' && <Page15TokenDMelt passedData={'Ordinals'}/>}       
+            <RouterProvider router={router}/>
 
         </div>
 
