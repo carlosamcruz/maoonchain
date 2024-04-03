@@ -21,15 +21,15 @@ const MainNavigation = () => {
                 </button>
                 {showHomeDropdown && (
                   <div className="dropdown-content">
-                     <NavLink to='/' className={({isActive}) => isActive ? 'dropdown-button active' : 'dropdown-button'} end>
+                     <NavLink to='/' className='dropdown-button' end>
                       Reception
                     </NavLink>
 
-                    <NavLink to='/access' className={({isActive}) => isActive ? 'dropdown-button active' : 'dropdown-button'} end>
+                    <NavLink to='/access' className='dropdown-button' end>
                     Access
                     </NavLink>
 
-                    <NavLink to='/send-sats' className={({isActive}) => isActive ? 'dropdown-button active' : 'dropdown-button'} end>
+                    <NavLink to='/send-sats' className='dropdown-button' end>
                     Send Sats
                     </NavLink>
 
@@ -55,26 +55,26 @@ const MainNavigation = () => {
                       {showDTOrdDropdown && (
                         <div className="button">
 
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto',  marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          <NavLink to="/smart-ordinals/ordinals-token/create" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto',  marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Create
-                          </button>
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          </NavLink>
+                          <NavLink to="/smart-ordinals/ordinals-token/reshape" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Reshape
-                          </button>
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          </NavLink>
+                          <NavLink to="/smart-ordinals/ordinals-token/transfer" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Transfer
-                          </button>
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          </NavLink>
+                          <NavLink to="/smart-ordinals/ordinals-token/melt" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Melt
-                          </button>
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          </NavLink>
+                          <NavLink to="/smart-ordinals/ordinals-token/details" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Details
-                          </button>
+                          </NavLink>
 
 
                         </div>
@@ -91,22 +91,22 @@ const MainNavigation = () => {
                         <div className="button">
 
 
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          <NavLink to="/smart-ordinals/market/order-lock" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Order Lock
-                          </button>
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          </NavLink>
+                          <NavLink to="/smart-ordinals/market/cancel" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Cancel
-                          </button>
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          </NavLink>
+                          <NavLink to="/smart-ordinals/market/buy" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Buy
-                          </button>
-                          <button className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
-                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}}>
+                          </NavLink>
+                          <NavLink to="/smart-ordinals/market/details" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Details
-                          </button>
+                          </NavLink>
 
                         </div>
                       )}
