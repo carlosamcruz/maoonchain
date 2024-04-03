@@ -9,22 +9,22 @@ import React, {FC} from 'react';
 
 import { useState, useRef, useEffect } from "react";
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString, ByteString } from "scrypt-ts";
-import './App.css';
-import { pvtkey } from './globals';
+import '../App.css';
+import { pvtkey } from '../globals';
 
 import {homepvtKey, homenetwork, compState} from './Home';
-import { broadcast, getSpentOutput, getTransaction, listUnspent, scriptHistory, exchangeRate } from './mProviders';
+import { broadcast, getSpentOutput, getTransaction, listUnspent, scriptHistory, exchangeRate } from '../mProviders';
 
-import { ContentType, RetContentType } from './OrdinalsContentType';
+import { ContentType, RetContentType } from '../OrdinalsContentType';
 //import { GeneralToken } from "./contracts/generaltoken";
 
-import { MarketPlaceToken } from "./contracts/mPlaceToken";
+import { MarketPlaceToken } from "../contracts/mPlaceToken";
 
-import { hexToLittleEndian, scriptUxtoSize, convertBinaryToHexString } from "./myUtils";
+import { hexToLittleEndian, scriptUxtoSize, convertBinaryToHexString } from "../myUtils";
 
 
 
-import { fileTypeFromData, hexToBytes} from "./myUtils";
+import { fileTypeFromData, hexToBytes} from "../myUtils";
 
 
 import * as fs from 'fs';

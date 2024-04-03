@@ -2,13 +2,13 @@
 import React, {FC} from 'react';
 import { useState, useRef, useEffect } from "react";
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString, ByteString, hash256 } from "scrypt-ts";
-import './App.css';
-import { pvtkey } from './globals';
+import '../App.css';
+import { pvtkey } from '../globals';
 //import * as request from 'request';
-import { broadcast, listUnspent, getTransaction } from './mProviders';
+import { broadcast, listUnspent, getTransaction } from '../mProviders';
 
 import {homepvtKey, homenetwork, compState} from './Home';
-import { pushDataSize } from './myUtils';
+import { pushDataSize } from '../myUtils';
 
 //const provider = new DefaultProvider({network: homenetwork});
 let signer: TestWallet;
@@ -17,8 +17,8 @@ interface props1 {
   passedData: string;
 }
 
-//const Page15TokenDMelt: FC = () => {
-  const Page15TokenDMelt: FC<props1> = (props) => {
+//const Page14TokenDTransfer: FC = () => {
+  const Page14TokenDTransfer: FC<props1> = (props) => {
 
   //const [pubkey, setPubkey] = useState("");
   const [address, setaddress] = useState("");
@@ -34,7 +34,7 @@ interface props1 {
   const [txid, setTXID] = useState("");
 
 
-  const [waitAlert, setwaitAlert] = useState("Press to Melt Token");
+  const [waitAlert, setwaitAlert] = useState("Press to Transfer Token");
 
 
 
@@ -156,18 +156,65 @@ interface props1 {
       
     }
     
-    else if(tokenTXID.current.value.length !== 64 )
+    else if(tokenTXID.current.value.length !== 64 
+    || ( addToSend.current.value.length < 10 ))
     {
       alert("Missing Data");
       setsendButton(true)
-      setwaitAlert("Press to Melt Token")
+      setwaitAlert("Press to Transfer Token")
     }
+
+    else if(props.passedData === 'Stamps' 
+      && ( addToSend.current.value.length !== 66 
+        &&  (addToSend.current.value.substring(0, 2) !== '02' && addToSend.current.value.substring(0, 2) !== '03') )
+
+      && ( addToSend.current.value.length !== 130 &&  addToSend.current.value.substring(0, 2) !== '04' )
+       
+      )
+      {
+        console.log('PBK Length: ', addToSend.current.value.length)
+        console.log('PBK type: ', addToSend.current.value.substring(0, 2))
+        alert("Public Key Incorrect");
+        setsendButton(true)
+        setwaitAlert("Press to Transfer Token")
+      }
     
     else
     {
       setLinkUrl('');
       setTXID('')
       setwaitAlert("Wait!!!");
+
+      //let addDestine = bsv.Address.fromString(addToSend.current.value);
+      let addDestine// = bsv.Address.fromString(addToSend.current.value);
+
+      console.log('ADD Destiny: ', addToSend.current.value)
+
+      //let 
+      if(props.passedData === 'Stamps')
+      {
+        let pbkdestiny = bsv.PublicKey.fromHex(addToSend.current.value); 
+        addDestine = bsv.Address.fromPublicKey(pbkdestiny);
+        console.log('ADD Destiny 01: ', addToSend.current.value)
+
+      }
+      else
+      {
+        addDestine = bsv.Address.fromString(addToSend.current.value);
+      }
+
+      console.log('ADD Destiny 01: ', addToSend.current.value)
+
+      if(props.passedData !== 'Stamps' && addToSend.current.value.substring(0, 1) === '1' && homenetwork === bsv.Networks.mainnet )
+      {
+        addDestine = bsv.Address.fromString(addToSend.current.value)
+      }
+      else if (props.passedData !== 'Stamps' && (addToSend.current.value.substring(0, 1) === 'm' || addToSend.current.value.substring(0, 1) === 'n') && homenetwork === bsv.Networks.testnet )
+      {
+        addDestine = bsv.Address.fromString(addToSend.current.value)
+      }
+
+      console.log('ADD Destiny: ', addDestine)
 
       //bsv.PrivateKey.fromHex
       let privateKey = bsv.PrivateKey.fromHex(homepvtKey, homenetwork);
@@ -210,6 +257,7 @@ interface props1 {
       if(utxoListOpt.length === 0)
       {
         //UTXOs = await provider.listUnspent(changeADD)
+
         UTXOs = await listUnspent(changeADD, homenetwork)
         //UTXOs[0].txId
       }
@@ -286,7 +334,7 @@ interface props1 {
       let pvScritp = true //Using previous script
       let satsToScript = 1000
       let changeScript = true //Using previous script
-      let meltToken = true //Default
+      let meltToken = false //Default
 
       let utxoIndex = 0
 
@@ -298,6 +346,7 @@ interface props1 {
       //scriptData = getData
 
       let scriptData = ''
+
       if(props.passedData === 'Ordinals')
       {
         //let index: number = getDataASM.indexOf('OP_FALSE OP_IF');
@@ -317,7 +366,7 @@ interface props1 {
         //console.log('Data HEX Get: ', getData)
         //console.log('Data HEX Get length: ', getData.length)
   
-        scriptData = 'OP_DUP OP_HASH160 ' + toHex(bsv.Address.fromPrivateKey(privateKey).hashBuffer) + ' OP_EQUALVERIFY OP_CHECKSIG ' + getData
+        scriptData = 'OP_DUP OP_HASH160 ' + toHex(addDestine.hashBuffer) + ' OP_EQUALVERIFY OP_CHECKSIG ' + getData
         
         //scriptData = 'OP_DUP OP_HASH160 ' + toHex(bsv.Address.fromPrivateKey(privateKey).hashBuffer) + ' OP_EQUALVERIFY OP_CHECKSIG ' + 
         //'OP_FALSE OP_IF ' + '6f7264'+ ' OP_TRUE ' + contentType + ' OP_FALSE '+ data1 + ' OP_ENDIF'
@@ -357,8 +406,6 @@ interface props1 {
           tSatoshis = tSatoshis + UTXOs[i].satoshis
       }
 
-      //tSatoshis = tSatoshis - 0 //take the satoshis that will be locked from the total ammount
-
 
       //TX do Contrato
       if(pvScritp)
@@ -388,6 +435,8 @@ interface props1 {
           }))
       }
 
+
+
       //TX do ADD
       tx2.addOutput(new bsv.Transaction.Output({
         //script: bsv.Script.buildPublicKeyHashOut(changeADD),
@@ -398,11 +447,12 @@ interface props1 {
       tx2 = tx2.seal()
       tx2 = tx2.sign(privateKey)
 
+
       // Para o Calcula da TAXA de rede
 
       let rawTX = toHex(tx2)
       let feeTX;
-      if(rawTX.substring(82, 84) === '00' && props.passedData !== 'True')
+      if(rawTX.substring(82, 84) === '00')
       {
           console.log('\nAJUSTE DE TAXA DE REDE \n')
           //rawTX = rawTX.substring(0, 82) + tx2.DERSEC()[0] + rawTX.substring(84, rawTX.length)
@@ -440,16 +490,7 @@ interface props1 {
       {
           tx2.from(UTXOs[i])
       }
-
     
-      /*
-      tx2.addOutput(new bsv.Transaction.Output({
-        script: bsv.Script.fromASM(scriptData),
-        satoshis: 0,
-      }))
-      */
-
-
       //TX do Contrato
       if(pvScritp)
       {
@@ -502,7 +543,7 @@ interface props1 {
       /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       //Inserção da Assinatura do Script
-      if(rawTX.substring(82, 84) === '00' && props.passedData !== 'True')
+      if(rawTX.substring(82, 84) === '00')
       {
           console.log('\nTest positon: ', rawTX.substring(82, 84))
           //rawTX = rawTX.substring(0, 82) + tx2.DERSEC()[0] + rawTX.substring(84, rawTX.length)
@@ -608,7 +649,7 @@ interface props1 {
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
           
-        Melt {props.passedData} Token
+        Transfer {props.passedData} Token
         
       </h2>
 
@@ -640,6 +681,7 @@ interface props1 {
                           </label>                   
       </div>
 
+
       <div>
         <div style={{ display: 'inline-block', textAlign: 'center', paddingBottom: '20px' }}>
           <label style={{ fontSize: '14px', paddingBottom: '0px' }}  
@@ -648,6 +690,30 @@ interface props1 {
                  <input ref={tokenTXID} type="hex" name="PVTKEY1" min="1" placeholder="token txid" />
               </label>     
           </div>
+      </div>
+
+      <div>
+        {
+
+          props.passedData != 'Stamps'?
+
+          <div style={{ display: 'inline-block', textAlign: 'center', paddingBottom: '20px' }}>
+            <label style={{ fontSize: '14px', paddingBottom: '0px' }}  
+                > 
+                  {/* <input ref={localPvtKey} type="hex" name="PVTKEY1" min="1" defaultValue={'PVT KEY'} placeholder="hex" />*/}
+                  <input ref={addToSend} type="text" name="PVTKEY1" min="1" placeholder="address (new owner)" />
+                </label>     
+          </div>
+          :
+          <div style={{ display: 'inline-block', textAlign: 'center', paddingBottom: '20px' }}>
+            <label style={{ fontSize: '14px', paddingBottom: '0px' }}  
+                > 
+                  {/* <input ref={localPvtKey} type="hex" name="PVTKEY1" min="1" defaultValue={'PVT KEY'} placeholder="hex" />*/}
+                  <input ref={addToSend} type="text" name="PVTKEY1" min="1" placeholder="pubkey (new owner)" />
+                </label>     
+          </div>
+
+        }
       </div>
 
       <div>
@@ -678,7 +744,7 @@ interface props1 {
               
               <button className="insert" onClick={handleSendButton}
                   style={{ fontSize: '14px', paddingBottom: '0px', marginLeft: '0px'}}
-              >Melt</button>
+              >Transfer</button>
 
           </div>
           :
@@ -686,7 +752,7 @@ interface props1 {
               
           <button className="insert" onClick={handleSendButton}
               style={{ fontSize: '14px', paddingBottom: '0px', marginLeft: '0px'}}
-          >Melt</button>
+          >Transfer</button>
           </div>
         }
       </div>
@@ -716,4 +782,4 @@ interface props1 {
   );
 };
 
-export default Page15TokenDMelt;
+export default Page14TokenDTransfer;

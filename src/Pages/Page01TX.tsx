@@ -2,9 +2,9 @@
 import React, {FC} from 'react';
 import { useState, useRef, useEffect } from "react";
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString } from "scrypt-ts";
-import './App.css';
-import { pvtkey } from './globals';
-import { broadcast, listUnspent, getTransaction } from './mProviders';
+import '../App.css';
+import { pvtkey } from '../globals';
+import { broadcast, listUnspent, getTransaction } from '../mProviders';
 
 
 import {homepvtKey, homenetwork, compState} from './Home';

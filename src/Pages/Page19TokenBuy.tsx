@@ -1,17 +1,18 @@
 import React, { useRef, FC, useState} from 'react';
 
 import logo from './logo.svg';
-import './App.css';
+import '../App.css';
 
-import { DefaultProvider, MethodCallOptions, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString, hash160, buildPublicKeyHashScript, findSig, SignatureResponse, hash256 } from "scrypt-ts";
+import { DefaultProvider, MethodCallOptions, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString, hash160, buildPublicKeyHashScript, findSig, SignatureResponse } from "scrypt-ts";
 
 //import { Statefulsc } from "./contracts/stateful";
-import { MarketPlaceToken } from "./contracts/mPlaceToken";
+import { MarketPlaceToken } from "../contracts/mPlaceToken";
 
 import {homepvtKey, homenetwork, compState} from './Home';
-import { broadcast, listUnspent, getTransaction, getSpentOutput} from './mProviders';
+import { broadcast, listUnspent, getTransaction, getSpentOutput} from '../mProviders';
 
-import { hexToLittleEndian, sleep } from "./myUtils";
+import { hexToLittleEndian, sleep } from "../myUtils";
+
 //const provider = new DefaultProvider({network: bsv.Networks.testnet});
 const provider = new DefaultProvider({network: homenetwork});
 let Alice: TestWallet
@@ -21,7 +22,7 @@ let txlink2 = ""
 //const privateKey = bsv.PrivateKey.fromHex("79342a4c317817a80a298fe116147a74e4e90912a4f321e588a4db67204e29b0", bsv.Networks.testnet)  
 //let privateKey = bsv.PrivateKey.fromHex(homepvtKey, homenetwork) 
 
-function Page18TokenLockCancel() {
+function Page19TokenBuy() {
 //const  deployACT: FC = () => {  
 
   const [deployedtxid, setdeptxid] = useState("");
@@ -29,16 +30,18 @@ function Page18TokenLockCancel() {
   const [linkUrl, setLinkUrl] = useState("");
   const [txid2, setTxid] = useState("");
   const txid = useRef<any>(null);
-  const txidPrvStt = useRef<any>(null);
+  const priceOffer = useRef<any>(null);
 
   const interact = async (amount: any) => {
     setdeptxid("Wait!!!")
 
-    if((txid.current.value.length === 64 ) 
-      )
+    if( txid.current.value.length === 64 )
     {
+
       // Por algum motivo ele não aceita o provider externo
-      let provider = new DefaultProvider({network: homenetwork}); 
+      //Para evitar o problema:  Should connect to a livenet provider
+      //Bypassar o provider externo e const
+      let provider = new DefaultProvider({network: homenetwork});
 
       await provider.connect()
 
@@ -49,30 +52,25 @@ function Page18TokenLockCancel() {
       /////////////////////////////////////////////
       //O signer deve ser conectado antes do try
       /////////////////////////////////////////////
-
       const signer = Alice
       //const balance = 1000
       //Linha necessária nesta versão
       //O signee deve ser connectado
       await signer.connect(provider)
 
-      //console.log('Até aqui 2!!')
-
-
   
       try {
-          
+  
+        
         //const message = toByteString('hello world', true)
         let tx = new bsv.Transaction
 
+        
         //////////////////////////////////////////////////////
         //Jesus is the Lord
         //////////////////////////////////////////////////////
-          
-        if(txid.current.value.length === 64)
-        {
-            tx = await provider.getTransaction(txid.current.value)
-        }
+
+        tx = await provider.getTransaction(txid.current.value)  
     
         //////////////////////////////////////////////////////
         //////////////////////////////////////////////////////
@@ -82,8 +80,8 @@ function Page18TokenLockCancel() {
   
         //const instance = Helloworld02.fromTx(tx, 0)
 
-        let finish = false
-        let newData = '';
+        //let finish = false
+        //let newData = '';
 
         let posNew1 = 0 // Output Index of the Contract in the Current State TX
 
@@ -98,90 +96,52 @@ function Page18TokenLockCancel() {
         //Inform to the system the right output index of the contract and its sequence
         tx.pvTxIdx(tx.id, posNew1, sha256(tx.outputs[posNew1].script.toHex()))
 
-        let orderCancel = true
     
         let pbkey = bsv.PublicKey.fromPrivateKey(privateKey)
-
-        //let numberOfSendTokens = BigInt(parseInt(orderValue.current.value, 10))
-        //let numberOfSendTokens = 3n
-        //let toNewOwner = PubKey(toHex(pbkeyBob))
-        //let toNewOwner = PubKey(receiverPBK.current.value)
-
 
         const balance = instance2.balance
         const nextInstance = instance2.next()
 
-        console.log("Balance: ", balance)
+        //let price = 3000n
 
-        let pbkeyUserX = PubKey(toHex(bsv.PublicKey.fromPrivateKey(privateKey)))
+        let price = BigInt(parseInt(priceOffer.current.value, 10))
 
-        if(!orderCancel)
-        {
-
-        }
-        else
-        {
-            nextInstance.sell = false
-            nextInstance.price = 0n
-        }
-       
+        nextInstance.alice = PubKey(toHex(pbkey))
+        nextInstance.price = 0n
+        nextInstance.sell = false
+      
         await instance2.connect(signer)
 
 
-        instance2.bindTxBuilder('sellOrder', async function () {
+        instance2.bindTxBuilder('buying', async function () {
 
           const changeAddress = bsv.Address.fromPrivateKey(privateKey)
      
           const unsignedTx: bsv.Transaction = new bsv.Transaction()
-          .addInputFromPrevTx(tx, 0)
+          .addInputFromPrevTx(tx, 0)  
 
-          if(orderCancel)
-          {
+          unsignedTx.addOutput(new bsv.Transaction.Output({
+            script: bsv.Script.fromHex(buildPublicKeyHashScript(hash160(toHex(pbkey))).toHex() + nextInstance.tokenData),
+            satoshis: parseInt(hexToLittleEndian(nextInstance.tokenSats), 16),
 
-              unsignedTx.addOutput(new bsv.Transaction.Output({
-                  script: bsv.Script.fromHex(nextInstance.tokenP2pkhScript + nextInstance.tokenData),
-                  satoshis: parseInt(hexToLittleEndian(nextInstance.tokenSats), 16),
-              }))
-              .change(changeAddress)
-
-
-              //console.log('Script 100 ext: ', ((unsignedTx.outputs[0].script.toHex())).substring(0, 100))
-              //console.log('Script size ext: ', ((unsignedTx.outputs[0].script).toHex()).length)
-              //console.log('Hash Script data: ', hash256((unsignedTx.outputs[0].script).toHex().substring(50)))
-              //console.log('Hash Script ext: ', hash256((unsignedTx.outputs[0].script).toHex()))
-
-          }
-          else
-          {
-
-              unsignedTx.addOutput(new bsv.Transaction.Output({
-                  script: nextInstance.lockingScript,
-                  satoshis: balance,
-              }))
-              .change(changeAddress)
-          
-
-          }
-
-          //console.log('Unsig TX Out: ', toHex(unsignedTx.outputs[0].script))
-
-      
+          })).addOutput(new bsv.Transaction.Output({
+              script: buildPublicKeyHashScript(hash160(instance2.alice)),
+              satoshis: Number(price)
+          })).change(changeAddress)
+  
           return Promise.resolve({
               tx: unsignedTx,
               atInputIndex: 0,
               nexts: [
               ]
-          });              
+          });      
         });
 
-
-        const { tx: callTx } = await instance2.methods.sellOrder(
-
+        const { tx: callTx } = await instance2.methods.buying(
           // the first argument `sig` is replaced by a callback function which will return the needed signature
-          (sigResps: SignatureResponse[]) => findSig(sigResps, pbkey), PubKey(toHex(pbkeyUserX)), 
-          !orderCancel,
-          nextInstance.price, nextInstance.toBuyerP2PKHScript, nextInstance.tokenSats, nextInstance.tokenScriptSize, nextInstance.tokenP2pkhScript, nextInstance.tokenData 
-          //PubKey(toHex(pbkeyUserX))
+          //PubKey(toHex(pbkey)),
+          buildPublicKeyHashScript(hash160(toHex(pbkey))).toHex(),
+          price,
         )
         
         console.log('TXID New State: ', callTx.id)     
@@ -205,8 +165,8 @@ function Page18TokenLockCancel() {
         setdeptxid(callTx.id)
     
       } catch (e) {
-        console.error('Cancel Order fails', e)
-        alert('Cancel Order fails')
+        console.error('Buy Order fails', e)
+        alert('Buy Order fails')
         setdeptxid("")
       }
     }
@@ -224,7 +184,7 @@ function Page18TokenLockCancel() {
         <h2 style={{ fontSize: '34px', paddingBottom: '5px', paddingTop: '5px'}}>
 
           <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>   
-          Order Cancel
+          Order Buy
           
         </h2>
 
@@ -234,7 +194,7 @@ function Page18TokenLockCancel() {
           <div style={{ textAlign: 'center' , paddingBottom: '20px' }}>
                 
                 <label style={{ fontSize: '14px', paddingBottom: '2px' }}
-                  >Inform Current or Previous State TXID:  
+                  >Inform Current State TXID:  
                 </label>     
           </div>
 
@@ -245,10 +205,17 @@ function Page18TokenLockCancel() {
                 </label>     
           </div>
 
+          <div style={{ textAlign: 'center', paddingBottom: '20px' }}>
+                <label style={{ fontSize: '14px', paddingBottom: '5px' }}  
+                > 
+                    <input ref={priceOffer} type="number" name="PVTKEY1" min="1" placeholder="price offer (satoshis)" />
+                </label>     
+          </div>
+
           <div style={{ textAlign: 'center' }}>     
                 <button className="insert" onClick={interact}
                     style={{ fontSize: '14px', paddingBottom: '2px', marginLeft: '0px'}}
-                >Cancel</button>
+                >Buy</button>
           </div>
 
         </div>
@@ -284,4 +251,4 @@ function Page18TokenLockCancel() {
   );
 }
 
-export default Page18TokenLockCancel;
+export default Page19TokenBuy;

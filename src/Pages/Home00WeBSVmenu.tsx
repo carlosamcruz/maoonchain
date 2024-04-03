@@ -2,7 +2,7 @@
 import React, {FC} from 'react';
 import { useState, useRef, useEffect } from "react";
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString } from "scrypt-ts";
-import './App.css';
+import '../App.css';
 
 export let homepvtKey: string = "";
 export let homenetwork = bsv.Networks.testnet;

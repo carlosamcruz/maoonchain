@@ -2,11 +2,11 @@
 import React, {FC} from 'react';
 import { useState, useRef, useEffect } from "react";
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString } from "scrypt-ts";
-import './App.css';
-import { pvtkey } from './globals';
+import '../App.css';
+import { pvtkey } from '../globals';
 
-import { broadcast, listUnspent } from './mProviders';
-import { convertBinaryToHexString , myUTXOData, setMyUTXOsData} from './myUtils';
+import { broadcast, listUnspent } from '../mProviders';
+import { convertBinaryToHexString , myUTXOData, setMyUTXOsData} from '../myUtils';
 
 
 export let homepvtKey: string = "";

@@ -2,16 +2,16 @@
 import React, {FC} from 'react';
 import { useState, useRef, useEffect } from "react";
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString, ByteString, hash256 } from "scrypt-ts";
-import './App.css';
-import { pvtkey } from './globals';
+import '../App.css';
+import { pvtkey } from '../globals';
 //import * as request from 'request';
-import { broadcast, listUnspent, getTransaction } from './mProviders';
+import { broadcast, listUnspent, getTransaction } from '../mProviders';
 
-import { ContentType } from './OrdinalsContentType';
+import { ContentType } from '../OrdinalsContentType';
 
 import {homepvtKey, homenetwork, compState} from './Home';
 
-import { dataFormatScryptSC, stringToHex, dataInfoFormat, convertBinaryToHexString, hexToBytes, pushDataSize} from "./myUtils";
+import { dataFormatScryptSC, stringToHex, dataInfoFormat, convertBinaryToHexString, hexToBytes, pushDataSize} from "../myUtils";
 
 //const provider = new DefaultProvider({network: homenetwork});
 let signer: TestWallet;

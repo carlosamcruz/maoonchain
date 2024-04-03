@@ -7,25 +7,25 @@ import './App.css';
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString } from "scrypt-ts";
 
 
-import Home from './Home';
+import Home from './Pages/Home';
 //import HomeUser from './HomeUser';
-import Home00WeBSVmenu from './Home00WeBSVmenu';
+import Home00WeBSVmenu from './Pages/Home00WeBSVmenu';
 
-import Page01TX from './Page01TX';
+import Page01TX from './Pages/Page01TX';
 
-import Page03Read from './Page03Read';
+import Page03Read from './Pages/Page03Read';
 
-import Page12TokenDCreate from './Page12TokenDCreate';
+import Page12TokenDCreate from './Pages/Page12TokenDCreate';
 
-import Page13TokenDReshape from './Page13TokenDReshape';
-import Page14TokenDTransfer from './Page14TokenDTransfer';
+import Page13TokenDReshape from './Pages/Page13TokenDReshape';
+import Page14TokenDTransfer from './Pages/Page14TokenDTransfer';
 
-import Page15TokenDMelt from './Page15TokenDMelt';
+import Page15TokenDMelt from './Pages/Page15TokenDMelt';
 
-import Page16TokenOLock from './Page16TokenOLock';
+import Page16TokenOLock from './Pages/Page16TokenOLock';
 
-import Page18TokenLockCancel from './Page18TokenLockCancel';
-import Page19TokenBuy from './Page19TokenBuy';
+import Page18TokenLockCancel from './Pages/Page18TokenLockCancel';
+import Page19TokenBuy from './Pages/Page19TokenBuy';
 
 
 const provider = new DefaultProvider({network: bsv.Networks.testnet});

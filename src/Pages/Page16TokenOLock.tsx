@@ -2,15 +2,15 @@
 import React, {FC} from 'react';
 import { useState, useRef, useEffect } from "react";
 import { DefaultProvider, sha256, toHex, PubKey, bsv, TestWallet, Tx, toByteString, ByteString, hash256, MethodCallOptions, ContractTransaction, findSig, SignatureResponse } from "scrypt-ts";
-import './App.css';
-import { pvtkey } from './globals';
+import '../App.css';
+import { pvtkey } from '../globals';
 //import * as request from 'request';
-import { broadcast, listUnspent, getTransaction } from './mProviders';
+import { broadcast, listUnspent, getTransaction } from '../mProviders';
 
 import {homepvtKey, homenetwork, compState} from './Home';
 
-import { MarketPlaceToken } from "./contracts/mPlaceToken";
-import { hexToLittleEndian, scriptUxtoSize } from "./myUtils";
+import { MarketPlaceToken } from "../contracts/mPlaceToken";
+import { hexToLittleEndian, scriptUxtoSize } from "../myUtils";
 
 //const provider = new DefaultProvider({network: homenetwork});
 let signer: TestWallet;
