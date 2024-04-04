@@ -1,2 +1,11 @@
-build image: docker build -t maoonchain-image .
-run container: docker run --name cont --rm -p 3000:3000 maoonchain-image
+First of all, you need have the docker installed in your machine (https://www.docker.com/).
+Then, choose one of these two ways to run the project with docker.
+
+* Run with docker-compose (Recommended!):
+    docker-compose up
+
+* Run building and running the image:
+build image (first step): docker build -t maoonchain-image .
+run container (last step): docker run --name cont --rm -p 3000:3000 maoonchain-image
+
+After, you have to browse to http://localhost:3000/ and you are good to go!
