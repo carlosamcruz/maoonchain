@@ -1,4 +1,4 @@
-FROM node
+FROM node as build
 
 WORKDIR /app
 
@@ -12,6 +12,14 @@ COPY . .
 
 RUN npx scrypt-cli@latest compile
 
+RUN npm run build
+
+FROM nginx:stable-alpine
+
+COPY config-docker/default.conf /etc/nginx/conf.d/default.conf
+
+COPY --from=build /app/build /usr/share/nginx/html
+
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
