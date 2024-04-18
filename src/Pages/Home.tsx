@@ -640,16 +640,17 @@ const Home: FC<props1> = (props) => {
                           >
                               {
                                 props.passedData === ''?
-                                'SEC Pub Key: '// + pubkey
+                                "SEC Pub Key: "
                                 :
                                 'Chave Pública: '// + pubkey
-                              } 
+                              }
+                              <span className='keyColor'>{pubkey}</span>
                           </label>
                           <span>&nbsp;</span>
                           <label className="responsive-label" htmlFor="output1" 
                           style={{ fontSize: '12px', paddingBottom: '20px', color: 'cyan' }} 
                           >
-                            {pubkey}
+                            {/* {pubkey} */}
 
                           </label>                   
                           <output id="output1"></output>

@@ -25,7 +25,7 @@
   font-size: calc(10px + 2vmin);
   color: white;
   margin-top: 0px;
-  width: 50%;
+  /* width: 100%; */
 }
 
 .App-header2 {
@@ -197,7 +197,7 @@ body {
   /*height: 8vh;  Set container height to fill the viewport */
   padding-top: 20px;
   /*padding: 0px;  Add some padding for spacing */
-  width: 90vw; /* Use viewport width units for responsiveness */
+  width: 400px; /*Use viewport width units for responsiveness*/
 }
 
 .responsive-label {
@@ -241,6 +241,15 @@ body {
 
 input[type="file"] {
   display: none;
+}
+
+.logo-maoonchain {
+  width: 100px;
+  /* justify-content: space-around; */
+}
+
+.keyColor {
+  color: cyan;
 }
 
 /*
