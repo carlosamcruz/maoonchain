@@ -1,11 +1,18 @@
-# Getting Started with Create React App
+# To Run Smart Ordinals
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `git clone -b develop  https://github.com/carlosamcruz/maoonchain`
+### `cd maoonchain`
+### `npm install`
 
-## Available Scripts
+Copy folders: 
+   ..\maoonchain\bsv
+   ..\maoonchain\scrypt-ts
 
-In the project directory, you can run:
+And Paste to inside folder:
+   ..\maoonchain\node_modules
+   (substituting the forer content)
 
+### `npx scrypt-cli@latest compile`
 ### `npm start`
 
 Runs the app in the development mode.\
