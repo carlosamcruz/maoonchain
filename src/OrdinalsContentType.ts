@@ -89,7 +89,7 @@ export const RetContentType: string[] = [
   'font/woff2',  '000000',
   'image/apng',  '000000',
   'image/avif',  '000000',
-  'image/gif',  '000000',
+  'image/gif',  '00001d',
   'image/jpeg',  '000004',
   'image/png',  '00000c',
   'image/svg+xml',  '000000',

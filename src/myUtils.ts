@@ -445,7 +445,8 @@ export function dataInfoFormat(hexStringData: string, fileName: string): string 
       if(fileName !== '')
       {
         //switch(selectedFile.name.split('.')[1])
-        switch(fileName.split('.')[1])
+        //switch(fileName.split('.')[1])
+        switch(fileName.split('.')[fileName.split('.').length - 1])
         {
           case 'txt': 
             dataInfo1 = '000001';
@@ -557,6 +558,10 @@ export function dataInfoFormat(hexStringData: string, fileName: string): string 
           case 'bmp': 
             dataInfo1 = '00001c';
             typeOfContent = ContentType.IMAGE_JPEG
+            break;
+          case 'gif': 
+            dataInfo1 = '00001d';
+            typeOfContent = ContentType.IMAGE_GIF
             break;                        
           default:
             typeOfContent = ContentType.MODEL_GLTF_BINARY
@@ -795,6 +800,10 @@ export function fileTypeFromData(fileType: string): any []
         //dataInfo1 = '000018';
         fType = ('bmp')
         break;       
+      case '00001d': 
+        //dataInfo1 = '000018';
+        fType = ('gif')
+        break;         
       case '000000': 
         //dataInfo1 = '000018';
         fType = ('bin')
