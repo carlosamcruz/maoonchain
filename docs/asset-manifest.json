@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/maoonchain/static/css/main.a66dc8d7.css",
+    "main.js": "/maoonchain/static/js/main.23c7c89c.js",
+    "static/js/787.fc4c4c13.chunk.js": "/maoonchain/static/js/787.fc4c4c13.chunk.js",
+    "index.html": "/maoonchain/index.html",
+    "main.a66dc8d7.css.map": "/maoonchain/static/css/main.a66dc8d7.css.map",
+    "main.23c7c89c.js.map": "/maoonchain/static/js/main.23c7c89c.js.map",
+    "787.fc4c4c13.chunk.js.map": "/maoonchain/static/js/787.fc4c4c13.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a66dc8d7.css",
+    "static/js/main.23c7c89c.js"
+  ]
+}
