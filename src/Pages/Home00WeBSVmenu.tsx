@@ -3,22 +3,17 @@ import '../App.css';
 
 const Home00WeBSVmenu: FC = () => {
   const texts = [
-    'Home/New PVT Key:', 'Create a new Private Key to Navigate',
-    'Home/Access:', 'Use a password or private key to Navigate',
-    'Home/Didactic:', 'Learn some didactic functions',
-    'Satoshi to Peer/Send Satoshi:', 'Transfer satoshis with standard scripts P2PKH and P2PK',
-    'Satoshi to Peer/Data on Chain:', 'Write or Retrieve chain data',
-    'Satoshi to Peer/Data Token R:', 'Create-Reshape-Transfer-Melt OP_RETURN data Token',
-    'Satoshi to Peer/Data Token D:', 'Create-Reshape-Transfer-Melt OP_DROP data Token',
-    'Satoshi to Peer/nSatOrdinals:', 'Create-Reshape-Transfer-Melt 1SatOrdinals or nSatOrdinals',
-    'Satoshi to Peer/UTXO list:', 'Get UTXO list of an Address or Script Hash',
-    'Smart Contracts:', 'Coming Soon!!!'
+    'Home / Reception:', 'Welcome to Smart Ordinals',
+    'Home / Access:', 'Use a password or private key to Navigate',
+    'Home / Send Sats:', 'Transfer satoshis with standard scripts P2PKH and P2PK',
+    'Smart Ord / 1SatOrdinals:', 'Create, Reshape, Transfer, Melt, Details of 1SatOrdinals Token',
+    'Smart Ord / Market On Chain:', 'Order Lock, Buy, Cancel, Details of Smart Ordinals',
   ];
 
   const [textIndex, setTextIndex] = useState(0);
   const [labelText, setLabelText] = useState(texts[0]);
   const [labelText2, setLabelText2] = useState(texts[1]);
-  const [imageSize, setImageSize] = useState(300); // Inicialize com o tamanho desejado da imagem
+  const [imageSize, setImageSize] = useState(600); // Inicialize com o tamanho desejado da imagem
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -42,7 +37,7 @@ const Home00WeBSVmenu: FC = () => {
       <div className="body2" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ textAlign: 'center', paddingTop: '20px', paddingBottom: '20px' }}>
           <label style={{ fontSize: '20px', paddingBottom: '2px' }}>
-            Enjoy Navigating
+            Boosting 1SatOrdinals Usability
           </label>
         </div>
         <div style={{ textAlign: 'center' }}>
@@ -58,8 +53,8 @@ const Home00WeBSVmenu: FC = () => {
             {labelText2}
           </label>
         </div>
-        <a href='https://medium.com/@cktcracker/websvmenu-faac499d0da5' target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', paddingBottom: '5px', color: 'yellow' }}>
-          About websvmenu
+        <a href='https://github.com/carlosamcruz/maoonchain/blob/main/README.md' target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', paddingBottom: '5px', color: 'yellow' }}>
+          About Smart Ordinals
         </a>
         {/* Adicione controles para ajustar o tamanho da imagem */}
         <div>

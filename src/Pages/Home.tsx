@@ -694,13 +694,16 @@ const Home: FC<props1> = (props) => {
                           </label>                   
         </div>
 
-        { props.passedData === ''?
+        { /*
+            props.passedData === ''?
             <a href='https://medium.com/@cktcracker/access-console-4489593b83e3' target="_blank" rel="noopener noreferrer"
               style={{ fontSize: '14px', paddingBottom: '5px', color: 'yellow' }}>
                 Instructions of Use
             </a>
             :
             ''
+
+            */
         } 
     
         {

@@ -296,7 +296,7 @@ Transaction.prototype.getSerializationError = function (opts) {
     return new errors.Transaction.InvalidSatoshis()
   }
 
-  var unspent = this.getUnspentValue()
+  var unspent = this._getUnspentValue()
   var unspentError
   if (unspent < 0) {
     if (!opts.disableMoreOutputThanInput) {
@@ -974,7 +974,7 @@ Transaction.prototype._updateChangeOutput = function () {
     script: this._changeScript,
     satoshis: 0
   }))
-  var available = this.getUnspentValue()
+  var available = this._getUnspentValue()
   var fee = this.getFee()
   var changeAmount = available - fee
   this._removeOutput(this._changeIndex)
@@ -1015,7 +1015,7 @@ Transaction.prototype.getFee = function () {
   }
   // if no change output is set, fees should equal all the unspent amount
   if (!this._changeScript) {
-    return this.getUnspentValue()
+    return this._getUnspentValue()
   }
   return this._estimateFee()
 }
@@ -1050,7 +1050,7 @@ Transaction.prototype._estimateFee = function () {
   return Math.ceil(estimatedSize / 1000 * (this._feePerKb || Transaction.FEE_PER_KB))
 }
 
-Transaction.prototype.getUnspentValue = function () {
+Transaction.prototype._getUnspentValue = function () {
   return this._getInputAmount() - this._getOutputAmount()
 }
 
@@ -1641,7 +1641,7 @@ Transaction.prototype.getEstimateFee = function () {
  * @returns true or false
  */
 Transaction.prototype.checkFeeRate = function (feePerKb) {
-  var fee = this.getUnspentValue()
+  var fee = this._getUnspentValue()
 
   var estimatedSize = this._estimateSize()
   var expectedRate = (feePerKb || this._feePerKb || Transaction.FEE_PER_KB) / 1000
