@@ -18,7 +18,7 @@ And Paste to inside folder:
    
    ..\maoonchain\node_modules
    
-   (substituting the forer content)
+   (substituting the former content)
 
 ### `npx scrypt-cli@latest compile`
 ### `npm start`
