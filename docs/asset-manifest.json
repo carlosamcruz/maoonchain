@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/maoonchain/static/css/main.a66dc8d7.css",
-    "main.js": "/maoonchain/static/js/main.366b4d42.js",
+    "main.js": "/maoonchain/static/js/main.ea6e443e.js",
     "static/js/787.fc4c4c13.chunk.js": "/maoonchain/static/js/787.fc4c4c13.chunk.js",
     "static/media/logo.gif": "/maoonchain/static/media/logo.411820412ff4dc42cb62.gif",
     "static/media/img_proj.png": "/maoonchain/static/media/img_proj.686906ad9a982465d105.png",
     "index.html": "/maoonchain/index.html",
     "main.a66dc8d7.css.map": "/maoonchain/static/css/main.a66dc8d7.css.map",
-    "main.366b4d42.js.map": "/maoonchain/static/js/main.366b4d42.js.map",
+    "main.ea6e443e.js.map": "/maoonchain/static/js/main.ea6e443e.js.map",
     "787.fc4c4c13.chunk.js.map": "/maoonchain/static/js/787.fc4c4c13.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a66dc8d7.css",
-    "static/js/main.366b4d42.js"
+    "static/js/main.ea6e443e.js"
   ]
 }

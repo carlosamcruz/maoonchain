@@ -33,11 +33,10 @@ function App() {
       <Route path='/smart-ordinals/market/buy' element={<Page19TokenBuy/>}/>
       <Route path='/smart-ordinals/market/details' element={<Page03Read passedData={'OLock'}/>}/>
       <Route path='/*' element={<NotFound/>}/>
-      
     </Route>
   )
 
-  const router = createBrowserRouter(routesDef);
+  const router = createBrowserRouter(routesDef, { basename: '/maoonchain' });
 
   return (
 
