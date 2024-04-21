@@ -1,13 +1,20 @@
 
 
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import MainNavigation from '../components/MainNavigation';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import Home00WeBSVmenu from './Home00WeBSVmenu';
 
 const RootLayout = () => {
-  let location = useLocation();
-  console.log(location.pathname);
+  let { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(pathname === '/maoonchain'){
+      navigate('/');
+      return;
+    }
+  }, [pathname, navigate]);
 
   const outletReturn = (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -32,7 +39,7 @@ const RootLayout = () => {
     <Fragment>
       <MainNavigation />
       <main style={{ padding: '0.5%' }}>
-        {location.pathname === '/' ? <Home00WeBSVmenu /> : outletReturn}
+        {pathname === '/' ? <Home00WeBSVmenu /> : outletReturn}
       </main>
     </Fragment>
   );
