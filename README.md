@@ -1,6 +1,6 @@
 # To Run Smart Ordinals
 
-The following instructions will help you to set the project up: 
+The following instructions will help you to setup the project from the current repo: 
 
 ```
  git clone https://github.com/carlosamcruz/maoonchain
@@ -8,24 +8,24 @@ The following instructions will help you to set the project up:
  npm install
 ```
 
-The project has some particularities that required some nonstandard changes in some files. Therefore, the following procedure will be required:
+The project requires some nonstandard changes in some files on node_modules. Therefore, the following procedure will be required:
 
-Delete Folders:
+Delete the following folders from node_modules:
 ```
    ..\maoonchain\node_modules\bsv
    ..\maoonchain\node_modules\scrypt-ts
 ```
-Copy custom folders: 
+Copy the custom folders from the repo: 
 ```
    ..\maoonchain\bsv   
    ..\maoonchain\scrypt-ts
 ```
-And Paste to inside folder:
+And paste them inside folder node_modules:
 ```   
    ..\maoonchain\node_modules
 ```
 
-Finally compile the contract and start it
+Finally, compile the sCrypt contract and start it
 ```
  npx scrypt-cli@latest compile
  npm start
