@@ -1,6 +1,6 @@
 # To Run Smart Ordinals
 
-### `git clone -b develop  https://github.com/carlosamcruz/maoonchain`
+### `git clone https://github.com/carlosamcruz/maoonchain`
 ### `cd maoonchain`
 ### `npm install`
 
@@ -34,6 +34,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-The project is also available at [Smart Ordinals] (https://carlosamcruz.github.io/maoonchain/)
+The project is also available at [Smart Ordinals](https://carlosamcruz.github.io/maoonchain/)
 
 "# maoonchain" 
