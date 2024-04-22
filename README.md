@@ -3,9 +3,9 @@
 The following instructions will help you to set the project up: 
 
 ```
- `git clone https://github.com/carlosamcruz/maoonchain`
- `cd maoonchain`
- `npm install`
+ git clone https://github.com/carlosamcruz/maoonchain
+ cd maoonchain
+ npm install
 ```
 
 The project has some particularities that required some nonstandard changes in some files. Therefore, the following procedure will be required:
@@ -27,8 +27,8 @@ And Paste to inside folder:
 
 Finally compile the contract and start it
 ```
- `npx scrypt-cli@latest compile`
- `npm start`
+ npx scrypt-cli@latest compile
+ npm start
 ```
 
 Runs the app in the development mode.\
