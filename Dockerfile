@@ -8,6 +8,8 @@ RUN npm install
 
 COPY bsv /app/node_modules
 
+COPY scrypt-ts /app/node_modules
+
 COPY . .
 
 RUN npx scrypt-cli@latest compile

@@ -9,27 +9,41 @@ const MainNavigation = () => {
     const [showDTOrdDropdown, setShowDTOrdDropdown] = useState<boolean>(false);
   
     const [showOrderLockDropdown, setShowOrderLockDropdown] = useState<boolean>(false);
+
+    const menuHome = () => {
+
+      setShowHomeDropdown(!showHomeDropdown); 
+      setShowTodoDropdown(false);  
+      setShowOrderLockDropdown(false);
+
+    }
+
+    const menuSmartOrd = () => {
+
+      setShowTodoDropdown(!showTodoDropdown); 
+      setShowHomeDropdown(false);   
+      setShowOrderLockDropdown(false);
+
+    }
   
   return (
             <nav className="navbar">
               <div className="dropdown">
                 <button className="button" 
-                    onClick={() => {  setShowHomeDropdown(!showHomeDropdown); 
-                                    setShowTodoDropdown(false);  
-                                    setShowOrderLockDropdown(false)}}>
+                    onClick={(e) => menuHome()}>
                   Home
                 </button>
                 {showHomeDropdown && (
                   <div className="dropdown-content">
-                     <NavLink to='/' className='dropdown-button' end>
+                     <NavLink to='/' onClick={(e) => menuHome()} className='dropdown-button' end>
                       Reception
                     </NavLink>
 
-                    <NavLink to='/access' className='dropdown-button' end>
+                    <NavLink to='/access' onClick={(e) => menuHome()} className='dropdown-button' end>
                     Access
                     </NavLink>
 
-                    <NavLink to='/send-sats' className='dropdown-button' end>
+                    <NavLink to='/send-sats' onClick={(e) => menuHome()} className='dropdown-button' end>
                     Send Sats
                     </NavLink>
 
@@ -39,9 +53,7 @@ const MainNavigation = () => {
 
               <div className="dropdown">
                 <button className="button" 
-                    onClick={() => {  setShowTodoDropdown(!showTodoDropdown); 
-                                    setShowHomeDropdown(false);   
-                                    setShowOrderLockDropdown(false)}}>
+                    onClick={(e) => menuSmartOrd()}>
                   Smart Ord
                 </button>
                 {showTodoDropdown && (
@@ -55,23 +67,23 @@ const MainNavigation = () => {
                       {showDTOrdDropdown && (
                         <div className="button">
 
-                          <NavLink to="/smart-ordinals/ordinals-token/create" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto',  marginRight: '0', 
+                          <NavLink to="/smart-ordinals/ordinals-token/create" onClick={(e) => menuSmartOrd()} className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto',  marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Create
                           </NavLink>
-                          <NavLink to="/smart-ordinals/ordinals-token/reshape" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/ordinals-token/reshape" onClick={(e) => menuSmartOrd()} className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Reshape
                           </NavLink>
-                          <NavLink to="/smart-ordinals/ordinals-token/transfer" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/ordinals-token/transfer" onClick={(e) => menuSmartOrd()} className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Transfer
                           </NavLink>
-                          <NavLink to="/smart-ordinals/ordinals-token/melt" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/ordinals-token/melt" onClick={(e) => menuSmartOrd()} className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Melt
                           </NavLink>
-                          <NavLink to="/smart-ordinals/ordinals-token/details" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/ordinals-token/details" onClick={(e) => menuSmartOrd()} className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Details
                           </NavLink>
@@ -91,19 +103,19 @@ const MainNavigation = () => {
                         <div className="button">
 
 
-                          <NavLink to="/smart-ordinals/market/order-lock" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/market/order-lock" onClick={(e) => menuSmartOrd()}className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Order Lock
                           </NavLink>
-                          <NavLink to="/smart-ordinals/market/cancel" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/market/cancel" className="dropdown-button-right" onClick={(e) => menuSmartOrd()} style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Cancel
                           </NavLink>
-                          <NavLink to="/smart-ordinals/market/buy" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/market/buy" className="dropdown-button-right" onClick={(e) => menuSmartOrd()} style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Buy
                           </NavLink>
-                          <NavLink to="/smart-ordinals/market/details" className="dropdown-button-right" style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
+                          <NavLink to="/smart-ordinals/market/details" className="dropdown-button-right" onClick={(e) => menuSmartOrd()} style={{ border: '1px solid #fff', marginLeft: 'auto', marginRight: '0', 
                           fontSize: '12px',color: 'white', background: '#323a3c', width: '60%'}} end>
                             Details
                           </NavLink>

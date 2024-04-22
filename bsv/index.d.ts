@@ -963,7 +963,7 @@ declare module 'bsv' {
         getSerializationError(opts?: object): any;
 
         getEstimateSize(): number;
-        getUnspentValue(): number;
+        _getUnspentValue(): number;
         _estimateFee(): number;
         _estimateSize: number;
         setInputScript(inputIndex: number | {
