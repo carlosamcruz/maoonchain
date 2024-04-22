@@ -5,11 +5,11 @@ The main goal of this project is to show the potential of turning a staless UTXO
 To demonstrate the potential of this technique, we aim to solve the problem of executing on-chain token exchanges without the involvement of third parties.
 
 Starting with 1SatOrdinals token, our solution allows the current token owner to encapulate his token into a stateful UTXO script that is an on-chain order lock with three possibilities:
-
+```
 1 - The order can be executed by any on-chain user that knows the order TXID;
 2 - The order can be executed by a single on-chain user indicated at the creation of the order lock;
 3 - The order can be cancelled by the owner of the token before it is bought by any other user;
-
+```
 Upon the execution of any of the three possibilities, the stateful script is turned again into a stateless 1SatOrdinals token assigned to the new ower in case of order execution, or to its former owner in case of order cancelation.
 
 In cases 1 and 2, the payment for the token in satoshis goes directly to the former owner, while the 1SatOrdinals ownership goes to the user that first run the contract.
@@ -17,12 +17,12 @@ In cases 1 and 2, the payment for the token in satoshis goes directly to the for
 The technique allows for true peer-to-peer on-chain exchange between users without the need of third party exchages to perform the job.
 
 Besides that, our solution also allows the user to create its own 1SatOrdinals or use the ones it has control over it with the following features:
-
+```
 1 - Create New 1SatOrdinals Tokens;
 2 - Reshape (change content or re-inscribe) any 1SatOrdinals Token the user has control over it;
 3 - Directly transfer the token ownership to another user;
 4 - Melt the token, that is to undo the 1SatOrdinals token using its UTXO and unbounding its satoshi for any other user;
-
+```
 Our solution don´t make use of indexers, but can be easily integrated if necessary.
 
 # To Run Smart Ordinals
