@@ -66,4 +66,22 @@ You will also see any lint errors in the console.
 
 The project is also available at [Smart Ordinals](https://carlosamcruz.github.io/maoonchain/)
 
+# Demo Video
+
+[Smart Ordinals - MaoOnChain - sCrypt Hackathon 2024](https://youtu.be/vwlL89Gu0R0)
+
+Set of transactions presented in the demo video:
+
+[496d1d580b3868c54cad9a11dc1e3a97e99ca8a14674e070a669caa7a4eb86ff](https://whatsonchain.com/tx/496d1d580b3868c54cad9a11dc1e3a97e99ca8a14674e070a669caa7a4eb86ff)
+
+[5b3c79d19c2db11e222ff1aff04ee6a0906e8c0cf3db571f68efb4d74defbe5d](https://whatsonchain.com/tx/5b3c79d19c2db11e222ff1aff04ee6a0906e8c0cf3db571f68efb4d74defbe5d)
+
+[54df8a9c482c6a19af8998e02c616d8a3c312739c11da92adaf1a80e104eb6c6](https://whatsonchain.com/tx/54df8a9c482c6a19af8998e02c616d8a3c312739c11da92adaf1a80e104eb6c6)
+
+[57ddbeffc7df03ad6a2487d722853cc56d356a2c09cdc0d7b2cc2488895cbdaf](https://whatsonchain.com/tx/57ddbeffc7df03ad6a2487d722853cc56d356a2c09cdc0d7b2cc2488895cbdaf)
+
+Transaction of the current 1SatOrdinals UTXO presented in the video:
+
+[f2f24df8ddc6112d201bc20df6e87959b418713285d1a916659579f2e89122a9](https://whatsonchain.com/tx/f2f24df8ddc6112d201bc20df6e87959b418713285d1a916659579f2e89122a9)
+
 "# maoonchain" 
