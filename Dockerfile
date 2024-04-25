@@ -14,9 +14,6 @@ COPY . .
 
 RUN npx scrypt-cli@latest compile
 
-ARG REACT_APP_DOCKER=TRUE
-ENV REACT_APP_DOCKER=$REACT_APP_DOCKER
-
 RUN npm run build
 
 FROM nginx:stable-alpine

@@ -15,17 +15,8 @@ import Page19TokenBuy from './Pages/Page19TokenBuy';
 import './App.css';
 import NotFound from './Pages/NotFound';
 import RootLayout from './Pages/RootLayout';
-import { useEffect } from 'react';
 
 function App() {
-
-     // Redirect adjusting
-     useEffect(() => {
-      if(window.location.pathname === '/'){
-        window.location.href = `${window.location.origin}/maoonchain`
-        return;
-      }
-    },[])
 
   const routesDef = createRoutesFromElements(
     <Route element={<RootLayout/>}>
