@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import '../App.css';
-import Logo from '../../public/logo.gif'
+// import Logo from '../../public/logo.gif';
+import Logo from '../assets/logo.gif';
 
 const Home00WeBSVmenu: FC = () => {
   const texts = [
@@ -14,7 +15,7 @@ const Home00WeBSVmenu: FC = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [labelText, setLabelText] = useState(texts[0]);
   const [labelText2, setLabelText2] = useState(texts[1]);
-  const [imageSize, setImageSize] = useState(600); // Inicialize com o tamanho desejado da imagem
+  const [imageSize, setImageSize] = useState(350); // Inicialize com o tamanho desejado da imagem
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -59,7 +60,7 @@ const Home00WeBSVmenu: FC = () => {
         </a>
         {/* Adicione controles para ajustar o tamanho da imagem */}
         <div>
-          <input type="range" min="100" max="500" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
+          <input type="range" min="100" max="350" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
         </div>
       </div>
     </div>
