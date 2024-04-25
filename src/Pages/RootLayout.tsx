@@ -4,7 +4,8 @@ import React, { Fragment } from 'react';
 import MainNavigation from '../components/MainNavigation';
 import { Outlet, useLocation } from 'react-router-dom';
 import Home00WeBSVmenu from './Home00WeBSVmenu';
-import ImgProj from '../../public/img_proj.png';
+// import ImgProj from '../../public/img_proj.png';
+import ImgProj from '../assets/img_proj.png';
 
 const RootLayout = () => {
   const { pathname } = useLocation();
@@ -20,6 +21,7 @@ const RootLayout = () => {
       </div>
       
       <Outlet />
+      
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <div>
