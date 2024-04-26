@@ -43,7 +43,7 @@ const Home00WeBSVmenu: FC = () => {
           </label>
         </div>
         <div style={{ textAlign: 'center' }}>
-          <img src={imagePathHandler(Logo) } alt="Descrição da imagem" style={{ width: `${imageSize}px`, height: 'auto' }} />
+          <img src={imagePathHandler(Logo) } alt="Descrição da imagem" style={{ width: `${imageSize}*2 px`, height: 'auto' }} />
         </div>
         <div style={{ textAlign: 'center', paddingTop: '20px', paddingBottom: '20px' }}>
           <label style={{ fontSize: '14px', paddingBottom: '2px' }}>
@@ -60,7 +60,7 @@ const Home00WeBSVmenu: FC = () => {
         </a>
         {/* Adicione controles para ajustar o tamanho da imagem */}
         <div>
-          <input type="range" min="100" max="350" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
+          <input type="range" min="100" max="600" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
         </div>
       </div>
     </div>
