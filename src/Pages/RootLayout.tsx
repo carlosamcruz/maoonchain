@@ -21,6 +21,7 @@ const RootLayout = () => {
       </div>
       
       <Outlet />
+      
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <div>
