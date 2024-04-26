@@ -5,6 +5,7 @@ import MainNavigation from '../components/MainNavigation';
 import { Outlet, useLocation } from 'react-router-dom';
 import Home00WeBSVmenu from './Home00WeBSVmenu';
 import ImgProj from '../../public/img_proj.png';
+import imagePathHandler from '../utils/imagePathHandler';
 
 const RootLayout = () => {
   const { pathname } = useLocation();
@@ -15,7 +16,7 @@ const RootLayout = () => {
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <div>
-          <img className='logo-maoonchain' src={process.env.REACT_APP_DOCKER ? `/${ImgProj}` : ImgProj} alt="Logo Mao On Chain" />
+          <img className='logo-maoonchain' src={imagePathHandler(ImgProj)} alt="Logo Mao On Chain" />
         </div>
       </div>
       
@@ -23,7 +24,7 @@ const RootLayout = () => {
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <div>
-            <img className='logo-maoonchain' src={process.env.REACT_APP_DOCKER ? `/${ImgProj}` : ImgProj} alt="Logo Mao On Chain" />
+            <img className='logo-maoonchain' src={imagePathHandler(ImgProj)} alt="Logo Mao On Chain" />
           </div>
         </div>
       </div>

@@ -19,13 +19,13 @@ import { useEffect } from 'react';
 
 function App() {
 
-     // Redirect adjusting
-     useEffect(() => {
-      if(window.location.pathname === '/'){
-        window.location.href = `${window.location.origin}/maoonchain`
-        return;
-      }
-    },[])
+  // Redirect adjusting
+  useEffect(() => {
+    if(window.location.pathname === '/'){
+      window.location.href = `${window.location.origin}/${process.env.REACT_APP_REPOSITORY}`
+      return;
+    }
+  },[])
 
   const routesDef = createRoutesFromElements(
     <Route element={<RootLayout/>}>
