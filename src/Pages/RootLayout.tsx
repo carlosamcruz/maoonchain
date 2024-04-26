@@ -11,6 +11,7 @@ const RootLayout = () => {
   const { pathname } = useLocation();
 
   console.log(process.env.REACT_APP_DOCKER, window.location.origin)
+  console.log(window.location, process.env.NODE_ENV)
 
   const outletReturn = (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
