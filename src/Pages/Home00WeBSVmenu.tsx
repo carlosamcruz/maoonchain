@@ -60,7 +60,7 @@ const Home00WeBSVmenu: FC = () => {
         </a>
         {/* Adicione controles para ajustar o tamanho da imagem */}
         <div>
-          <input type="range" min="100" max="600" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
+          <input type="range" min="100" max="350" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
         </div>
       </div>
     </div>
