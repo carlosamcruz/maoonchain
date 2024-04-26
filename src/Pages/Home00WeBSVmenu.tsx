@@ -15,7 +15,7 @@ const Home00WeBSVmenu: FC = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [labelText, setLabelText] = useState(texts[0]);
   const [labelText2, setLabelText2] = useState(texts[1]);
-  const [imageSize, setImageSize] = useState(600); // Inicialize com o tamanho desejado da imagem
+  const [imageSize, setImageSize] = useState(500); // Inicialize com o tamanho desejado da imagem
 
   useEffect(() => {
     const intervalId = setInterval(() => {
