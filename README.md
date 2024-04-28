@@ -76,6 +76,10 @@ docker compose up --build -d
 Finally:
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+# Tutorial on how to use Smart Ordinals
+
+The tutorial is available at our medium blog [Smart Ordinals — Tutorial]([https://carlosamcruz.github.io/maoonchain/](https://medium.com/@cktcracker/smart-ordinals-test-c071424e6269))
+
 # Demo Video
 
 [Smart Ordinals - MaoOnChain - sCrypt Hackathon 2024](https://youtu.be/vwlL89Gu0R0)
