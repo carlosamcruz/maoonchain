@@ -58,18 +58,6 @@ Finally, compile the sCrypt contract and start it
  npm start
 ```
 
-# To Run Smart Ordinals with Docker
-
-To run the project with Docker:
-
-Need to have Docker installed on your PC
-
-```Docker
-docker compose up --build -d
-```
-Finally:
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -77,6 +65,16 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 The project is also available at [Smart Ordinals](https://carlosamcruz.github.io/maoonchain/)
+
+# To Run Smart Ordinals with Docker
+
+The user needs to have Docker installed on his PC
+
+```Docker
+docker compose up --build -d
+```
+Finally:
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 # Demo Video
 
