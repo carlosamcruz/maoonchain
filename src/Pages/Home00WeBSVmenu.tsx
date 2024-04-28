@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import '../App.css';
 import Logo from '../../public/logo.gif'
+import imagePathHandler from '../utils/imagePathHandler';
 
 const Home00WeBSVmenu: FC = () => {
   const texts = [
@@ -14,7 +15,7 @@ const Home00WeBSVmenu: FC = () => {
   const [textIndex, setTextIndex] = useState(0);
   const [labelText, setLabelText] = useState(texts[0]);
   const [labelText2, setLabelText2] = useState(texts[1]);
-  const [imageSize, setImageSize] = useState(600); // Inicialize com o tamanho desejado da imagem
+  const [imageSize, setImageSize] = useState(500); // Inicialize com o tamanho desejado da imagem
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -42,7 +43,7 @@ const Home00WeBSVmenu: FC = () => {
           </label>
         </div>
         <div style={{ textAlign: 'center' }}>
-          <img src={Logo} alt="Descrição da imagem" style={{ width: `${imageSize}px`, height: 'auto' }} />
+          <img src={imagePathHandler(Logo) } alt="Descrição da imagem" style={{ width: `${imageSize}px`, height: 'auto' }} />
         </div>
         <div style={{ textAlign: 'center', paddingTop: '20px', paddingBottom: '20px' }}>
           <label style={{ fontSize: '14px', paddingBottom: '2px' }}>
@@ -59,7 +60,7 @@ const Home00WeBSVmenu: FC = () => {
         </a>
         {/* Adicione controles para ajustar o tamanho da imagem */}
         <div>
-          <input type="range" min="100" max="500" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
+          <input type="range" min="100" max="350" value={imageSize} onChange={(e) => setImageSize(parseInt(e.target.value))} />
         </div>
       </div>
     </div>

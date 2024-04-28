@@ -5,23 +5,28 @@ import MainNavigation from '../components/MainNavigation';
 import { Outlet, useLocation } from 'react-router-dom';
 import Home00WeBSVmenu from './Home00WeBSVmenu';
 import ImgProj from '../../public/img_proj.png';
+import imagePathHandler from '../utils/imagePathHandler';
 
 const RootLayout = () => {
   const { pathname } = useLocation();
+
+  console.log(process.env.REACT_APP_DOCKER, window.location.origin)
+  console.log(window.location, process.env.NODE_ENV)
 
   const outletReturn = (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <div>
-          <img className='logo-maoonchain' src={ImgProj} alt="Logo Mao On Chain" />
+          <img className='logo-maoonchain' src={imagePathHandler(ImgProj)} alt="Logo Mao On Chain" />
         </div>
       </div>
       
       <Outlet />
+      
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
           <div>
-            <img className='logo-maoonchain' src={ImgProj} alt="Logo Mao On Chain" />
+            <img className='logo-maoonchain' src={imagePathHandler(ImgProj)} alt="Logo Mao On Chain" />
           </div>
         </div>
       </div>
